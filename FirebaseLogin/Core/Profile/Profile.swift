@@ -12,7 +12,7 @@ struct Profile: View {
         List {
             Section {
                 HStack {
-                    Text("TA")
+                    Text(User.MOCK_USER.initials)
                         .font(.title)
                         .fontWeight(.semibold)
                         .frame(width: 72, height: 72)
@@ -21,15 +21,15 @@ struct Profile: View {
                         .clipShape(Circle())
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Tim Aven")
+                        Text(User.MOCK_USER.fullName)
                             .font(.title)
                             .fontWeight(.semibold)
                             .padding(.top, 4)
 
-                        Text("timaven@gmail.com")
+                        Text(User.MOCK_USER.email)
                             .fontWeight(.semibold)
                             .font(.subheadline)
-                            .accentColor(.gray)
+                            .foregroundColor(.gray)
                         
                     }
                 }
@@ -44,7 +44,7 @@ struct Profile: View {
                     Text("1.0.1")
                         .font(.subheadline)
                         .foregroundColor(Color(.systemGray3))
-                        
+
                 }
                 
             }

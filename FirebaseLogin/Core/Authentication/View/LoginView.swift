@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         NavigationStack {
@@ -37,7 +38,9 @@ struct LoginView: View {
                 .padding(.top, 12)
                 
                 Button {
-                    print("Log user in..")
+                    Task {
+                        try await viewModel.signIn(withEmail:email, password:password)
+                    }
                 } label: {
                     HStack {
                         Text("SIGN IN")
@@ -56,7 +59,7 @@ struct LoginView: View {
                 //Sign up button
                 NavigationLink {
                     RegistrationView()
-                        .navigationBarBackButtonHidden()
+                        
                 } label: {
                     HStack(spacing: 3){
                         Text("Dont have an account?")
