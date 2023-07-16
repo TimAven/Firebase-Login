@@ -36,12 +36,29 @@ struct Profile: View {
             }
             Section("General") {
                 HStack {
-                    Image()
+                    SettingsRowView(imageName: "gear",
+                                    title: "Version",
+                                    tintColor: Color(.systemGray))
+                    Spacer()
+                    
+                    Text("1.0.1")
+                        .font(.subheadline)
+                        .foregroundColor(Color(.systemGray3))
+                        
                 }
                 
             }
             Section("Account") {
-                
+                Button {
+                    print("sign out")
+                } label: {
+                    SettingsRowView(imageName: "arrow.left.circle.fill", title: "Sign Out", tintColor: .red)
+                }
+                Button {
+                    print("Delete Account")
+                } label: {
+                    SettingsRowView(imageName: "xmark.circle.fill", title: "Delete Account", tintColor: .red)
+                }
             }
             
         }
